@@ -16,8 +16,8 @@ export const translations = {
     hero: {
       heading: 'Build AI chat agents<br />you actually <span class="accent">own</span>.',
       sub: "Chasqui is an open-source, self-hosted stack for custom AI chat agents: conversation engine, memory, RAG, human handoff and a pluggable tool system — wired and ready, so your energy goes into your agent's logic. <strong>WhatsApp today, more channels on the roadmap.</strong>",
-      getStarted: "Get started →",
-      star: "★ Star on GitHub",
+      getStarted: "Get started",
+      star: "Star on GitHub",
       note: "Apache-2.0 · beta · one command scaffolds and provisions the whole stack",
       shotAlt:
         "Chasqui operator panel: a human-handoff conversation with image and voice messages",
@@ -120,7 +120,7 @@ export const translations = {
       waTitle: "Chat on WhatsApp",
       waDetail: "Yes — the same channel Chasqui speaks.",
       waHref:
-        "https://wa.me/51950350453?text=Hi!%20I%20found%20Chasqui%20and%20I%27d%20like%20to%20talk.",
+        "https://wa.me/51959350453?text=Hi!%20I%20found%20Chasqui%20and%20I%27d%20like%20to%20talk.",
     },
     footer: {
       lore: "Named after the <em>chasqui</em> — the relay messengers of the Inca empire who carried messages across the network.",
@@ -143,8 +143,8 @@ export const translations = {
       heading:
         'Construye agentes de chat<br />con IA que de verdad son <span class="accent">tuyos</span>.',
       sub: "Chasqui es un stack open-source y self-hosted para agentes de chat con IA a medida: motor de conversación, memoria, RAG, handoff humano y un sistema de tools enchufable — todo cableado y listo, para que tu energía vaya a la lógica de tu agente. <strong>WhatsApp hoy, más canales en el roadmap.</strong>",
-      getStarted: "Empieza ahora →",
-      star: "★ Star en GitHub",
+      getStarted: "Empieza ahora",
+      star: "Star en GitHub",
       note: "Apache-2.0 · beta · un comando crea y aprovisiona todo el stack",
       shotAlt:
         "Panel de operación de Chasqui: una conversación con handoff humano, con mensajes de imagen y voz",
@@ -247,7 +247,7 @@ export const translations = {
       waTitle: "Escríbenos por WhatsApp",
       waDetail: "Sí — el mismo canal que habla Chasqui.",
       waHref:
-        "https://wa.me/51950350453?text=%C2%A1Hola!%20Encontr%C3%A9%20Chasqui%20y%20me%20gustar%C3%ADa%20conversar.",
+        "https://wa.me/51959350453?text=%C2%A1Hola!%20Encontr%C3%A9%20Chasqui%20y%20me%20gustar%C3%ADa%20conversar.",
     },
     footer: {
       lore: "El nombre viene del <em>chasqui</em> — los mensajeros de relevo del imperio inca que llevaban los mensajes a través de la red.",

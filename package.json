@@ -12,6 +12,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource/rubik": "^5.2.5",
     "@fontsource/space-grotesk": "^5.2.5",
+    "@lucide/astro": "^1.18.0",
     "astro": "^6.4.6",
     "sharp": "^0.35.1"
   }

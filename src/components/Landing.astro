@@ -10,6 +10,14 @@ import inboxShot from "../assets/inbox.png";
 import conversationShot from "../assets/conversation.png";
 import dashboardShot from "../assets/dashboard-dark.png";
 import { translations, type Lang } from "../i18n";
+import {
+  ArrowLeftRight,
+  ArrowRight,
+  Check,
+  Mail,
+  MessageCircle,
+  Star,
+} from "@lucide/astro";
 
 interface Props {
   lang: Lang;
@@ -90,8 +98,8 @@ const stepCode = [
         </div>
 
         <div class="hero-ctas">
-          <a class="btn btn-amber" href={GITHUB}>{t.hero.getStarted}</a>
-          <a class="btn btn-outline" href={GITHUB}>{t.hero.star}</a>
+          <a class="btn btn-amber" href={GITHUB}>{t.hero.getStarted} <ArrowRight size={17} /></a>
+          <a class="btn btn-outline" href={GITHUB}><Star size={16} /> {t.hero.star}</a>
         </div>
 
         <p class="hero-note">{t.hero.note}</p>
@@ -135,7 +143,7 @@ const stepCode = [
           <div class="diagram-contract">
             <span>{t.architecture.contract}</span>
             <code>/ingest · /send</code>
-            <div class="diagram-arrow">⟷</div>
+            <div class="diagram-arrow"><ArrowLeftRight size={26} /></div>
           </div>
           <div class="diagram-col">
             <div class="diagram-box core">
@@ -156,7 +164,14 @@ const stepCode = [
           <span class="eyebrow">{t.panel.eyebrow}</span>
           <h2 class="section-title">{t.panel.title}</h2>
           <ul class="checklist">
-            {t.panel.checklist.map((item) => <li>{item}</li>)}
+            {
+              t.panel.checklist.map((item) => (
+                <li>
+                  <span class="check"><Check size={13} stroke-width={3} /></span>
+                  {item}
+                </li>
+              ))
+            }
           </ul>
         </div>
         <div class="panel-shots">
@@ -211,12 +226,12 @@ const stepCode = [
         <p class="section-lead">{t.contact.lead}</p>
         <div class="contact-grid">
           <a class="contact-card" href="mailto:hello@chasqui.chat">
-            <span class="contact-icon">✉️</span>
+            <span class="contact-icon"><Mail size={26} /></span>
             <strong>hello@chasqui.chat</strong>
             <span>{t.contact.emailDetail}</span>
           </a>
           <a class="contact-card" href={t.contact.waHref} rel="noopener">
-            <span class="contact-icon">💬</span>
+            <span class="contact-icon"><MessageCircle size={26} /></span>
             <strong>{t.contact.waTitle}</strong>
             <span>{t.contact.waDetail}</span>
           </a>
@@ -535,18 +550,15 @@ const stepCode = [
     position: relative;
     color: var(--ink-muted);
   }
-  .checklist li::before {
-    content: "✓";
+  .checklist .check {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 2px;
     width: 20px;
     height: 20px;
     border-radius: 6px;
     background: var(--amber);
     color: var(--charcoal);
-    font-size: 13px;
-    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -691,8 +703,9 @@ const stepCode = [
     box-shadow: 0 8px 24px rgba(28, 25, 23, 0.12);
   }
   .contact-icon {
-    font-size: 26px;
+    color: var(--terracotta);
     margin-bottom: 8px;
+    display: inline-flex;
   }
   .contact-card strong {
     font-family: var(--font-display);
