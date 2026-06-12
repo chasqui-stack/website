@@ -78,6 +78,7 @@ const roadmap = [
           <a href="#architecture">Architecture</a>
           <a href="#quickstart">Quickstart</a>
           <a href="#roadmap">Roadmap</a>
+          <a href="#contact">Contact</a>
           <a class="btn btn-amber nav-cta" href={GITHUB}>GitHub</a>
         </nav>
       </div>
@@ -247,6 +248,29 @@ cd admin && npm run dev</code></pre>
       </div>
     </section>
 
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h2 class="section-title">Want an agent built for you?</h2>
+        <p class="section-lead">
+          We build custom agents on Chasqui and help teams get theirs running.
+          Bugs and ideas go to GitHub issues — for everything else, talk to us:
+        </p>
+        <div class="contact-grid">
+          <a class="contact-card" href="mailto:hello@chasqui.chat">
+            <span class="contact-icon">✉️</span>
+            <strong>hello@chasqui.chat</strong>
+            <span>Questions, partnerships, consulting.</span>
+          </a>
+          <a class="contact-card" href="https://wa.me/51959360453?text=Hi!%20I%20found%20Chasqui%20and%20I%27d%20like%20to%20talk." rel="noopener">
+            <span class="contact-icon">💬</span>
+            <strong>Chat on WhatsApp</strong>
+            <span>Yes — the same channel Chasqui speaks.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer">
       <div class="container footer-inner">
         <p class="footer-lore">
@@ -258,6 +282,7 @@ cd admin && npm run dev</code></pre>
           <a href="https://pypi.org/project/chasqui/">PyPI</a>
           <a href="https://github.com/chasqui-stack/chasqui/blob/main/docs/ARCHITECTURE.md">Architecture</a>
           <a href="https://github.com/chasqui-stack/chasqui/blob/main/LICENSE">Apache-2.0</a>
+          <a href="mailto:hello@chasqui.chat">hello@chasqui.chat</a>
         </nav>
         <p class="footer-copy">© 2026 Chasqui contributors</p>
       </div>
@@ -664,6 +689,47 @@ cd admin && npm run dev</code></pre>
     font-family: var(--font-display);
   }
   .roadmap-item span {
+    color: var(--ink-muted);
+    font-size: 15px;
+  }
+
+  /* ---- contact ---- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+    max-width: 760px;
+  }
+  @media (max-width: 640px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .contact-card {
+    background: #fff;
+    border: 1.5px solid var(--charcoal);
+    border-radius: 14px;
+    padding: 26px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(28, 25, 23, 0.12);
+  }
+  .contact-icon {
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+  .contact-card strong {
+    font-family: var(--font-display);
+    font-size: 18px;
+  }
+  .contact-card span:last-child {
     color: var(--ink-muted);
     font-size: 15px;
   }
