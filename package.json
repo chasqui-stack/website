@@ -9,6 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource/rubik": "^5.2.5",
     "@fontsource/space-grotesk": "^5.2.5",
     "astro": "^6.4.6",

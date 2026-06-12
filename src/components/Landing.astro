@@ -1,0 +1,740 @@
+---
+import "@fontsource/rubik/400.css";
+import "@fontsource/rubik/500.css";
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/700.css";
+import "../styles/global.css";
+import { Image } from "astro:assets";
+import logo from "../assets/chasqui-logo.svg";
+import inboxShot from "../assets/inbox.png";
+import conversationShot from "../assets/conversation.png";
+import dashboardShot from "../assets/dashboard-dark.png";
+import { translations, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = translations[lang];
+
+const SITE = "https://chasqui.chat";
+const GITHUB = "https://github.com/chasqui-stack/chasqui";
+const home = lang === "en" ? "/" : "/es/";
+const canonical = `${SITE}${home}`;
+
+const stepCode = [
+  "uvx chasqui new my-agent",
+  "cd core && make dev\ncd whatsapp && make dev\ncd admin && npm run dev",
+  "docs/WHATSAPP-SETUP.md",
+];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.title}</title>
+    <meta name="description" content={t.description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={`${SITE}/`} />
+    <link rel="alternate" hreflang="es" href={`${SITE}/es/`} />
+    <link rel="alternate" hreflang="x-default" href={`${SITE}/`} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={t.title} />
+    <meta property="og:description" content={t.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${SITE}/og.png`} />
+    <meta property="og:locale" content={t.ogLocale} />
+    <meta
+      property="og:locale:alternate"
+      content={lang === "en" ? "es_LA" : "en_US"}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href={home} aria-label="Chasqui home">
+          <Image src={logo} alt="Chasqui" height={36} class="nav-logo" />
+        </a>
+        <nav class="nav-links">
+          <a href="#features">{t.nav.features}</a>
+          <a href="#architecture">{t.nav.architecture}</a>
+          <a href="#quickstart">{t.nav.quickstart}</a>
+          <a href="#roadmap">{t.nav.roadmap}</a>
+          <a href="#contact">{t.nav.contact}</a>
+          <div class="lang-switch">
+            <a href="/" class={lang === "en" ? "active" : ""} aria-current={lang === "en" ? "page" : undefined}>EN</a>
+            <span aria-hidden="true">·</span>
+            <a href="/es/" class={lang === "es" ? "active" : ""} aria-current={lang === "es" ? "page" : undefined}>ES</a>
+          </div>
+          <a class="btn btn-amber nav-cta" href={GITHUB}>GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1 set:html={t.hero.heading} />
+        <p class="hero-sub" set:html={t.hero.sub} />
+
+        <div class="terminal" id="install">
+          <span class="terminal-dollar">$</span>
+          <code id="install-cmd">uvx chasqui new my-agent</code>
+          <button class="copy-btn" data-copy="uvx chasqui new my-agent" aria-label="Copy command">copy</button>
+        </div>
+
+        <div class="hero-ctas">
+          <a class="btn btn-amber" href={GITHUB}>{t.hero.getStarted}</a>
+          <a class="btn btn-outline" href={GITHUB}>{t.hero.star}</a>
+        </div>
+
+        <p class="hero-note">{t.hero.note}</p>
+      </div>
+
+      <div class="container hero-shot-wrap">
+        <Image src={inboxShot} alt={t.hero.shotAlt} class="hero-shot" widths={[760, 1520]} sizes="(max-width: 800px) 100vw, 1032px" />
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <span class="eyebrow">{t.features.eyebrow}</span>
+        <h2 class="section-title">{t.features.title}</h2>
+        <p class="section-lead">{t.features.lead}</p>
+        <div class="grid">
+          {
+            t.features.cards.map((f) => (
+              <div class="card">
+                <h3>{f.title}</h3>
+                <p>{f.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="architecture">
+      <div class="container">
+        <span class="eyebrow">{t.architecture.eyebrow}</span>
+        <h2 class="section-title">{t.architecture.title}</h2>
+        <p class="section-lead">{t.architecture.lead}</p>
+
+        <div class="diagram" role="img" aria-label={t.architecture.diagramAria}>
+          <div class="diagram-col">
+            <div class="diagram-box channel">WhatsApp<br /><small>{t.architecture.whatsapp}</small></div>
+            <div class="diagram-box channel dashed">Telegram<br /><small>{t.architecture.roadmapTag}</small></div>
+            <div class="diagram-box channel dashed">{t.architecture.webWidget}<br /><small>{t.architecture.roadmapTag}</small></div>
+          </div>
+          <div class="diagram-contract">
+            <span>{t.architecture.contract}</span>
+            <code>/ingest · /send</code>
+            <div class="diagram-arrow">⟷</div>
+          </div>
+          <div class="diagram-col">
+            <div class="diagram-box core">
+              core<br /><small set:html={t.architecture.coreSmall} />
+            </div>
+            <div class="diagram-box store">Postgres + pgvector</div>
+            <div class="diagram-box admin-box">{t.architecture.admin}<br /><small>{t.architecture.adminSmall}</small></div>
+          </div>
+        </div>
+
+        <p class="section-foot" set:html={t.architecture.foot} />
+      </div>
+    </section>
+
+    <section class="section" id="panel">
+      <div class="container panel-grid">
+        <div>
+          <span class="eyebrow">{t.panel.eyebrow}</span>
+          <h2 class="section-title">{t.panel.title}</h2>
+          <ul class="checklist">
+            {t.panel.checklist.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="panel-shots">
+          <Image src={dashboardShot} alt={t.panel.dashboardAlt} class="shot" widths={[520, 1040]} sizes="(max-width: 800px) 100vw, 520px" />
+          <Image src={conversationShot} alt={t.panel.conversationAlt} class="shot" widths={[520, 1040]} sizes="(max-width: 800px) 100vw, 520px" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section quickstart" id="quickstart">
+      <div class="container">
+        <span class="eyebrow eyebrow-amber">{t.quickstart.eyebrow}</span>
+        <h2 class="section-title">{t.quickstart.title}</h2>
+        <div class="steps">
+          {
+            t.quickstart.steps.map((s, i) => (
+              <div class="step">
+                <div class="step-n">{i + 1}</div>
+                <h3>{s.title}</h3>
+                <pre><code>{stepCode[i]}</code></pre>
+                <p>{s.body}</p>
+              </div>
+            ))
+          }
+        </div>
+        <p class="section-foot quickstart-foot" set:html={t.quickstart.foot} />
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="container">
+        <span class="eyebrow">{t.roadmap.eyebrow}</span>
+        <h2 class="section-title">{t.roadmap.title}</h2>
+        <div class="roadmap">
+          {
+            t.roadmap.items.map((r) => (
+              <div class="roadmap-item">
+                <strong>{r.title}</strong>
+                <span>{r.detail}</span>
+              </div>
+            ))
+          }
+        </div>
+        <p class="section-foot" set:html={t.roadmap.foot} />
+      </div>
+    </section>
+
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <span class="eyebrow">{t.contact.eyebrow}</span>
+        <h2 class="section-title">{t.contact.title}</h2>
+        <p class="section-lead">{t.contact.lead}</p>
+        <div class="contact-grid">
+          <a class="contact-card" href="mailto:hello@chasqui.chat">
+            <span class="contact-icon">✉️</span>
+            <strong>hello@chasqui.chat</strong>
+            <span>{t.contact.emailDetail}</span>
+          </a>
+          <a class="contact-card" href={t.contact.waHref} rel="noopener">
+            <span class="contact-icon">💬</span>
+            <strong>{t.contact.waTitle}</strong>
+            <span>{t.contact.waDetail}</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p class="footer-lore" set:html={t.footer.lore} />
+        <nav class="footer-links">
+          <a href={GITHUB}>GitHub</a>
+          <a href="https://pypi.org/project/chasqui/">PyPI</a>
+          <a href="https://github.com/chasqui-stack/chasqui/blob/main/docs/ARCHITECTURE.md">{t.nav.architecture}</a>
+          <a href="https://github.com/chasqui-stack/chasqui/blob/main/LICENSE">Apache-2.0</a>
+          <a href="mailto:hello@chasqui.chat">hello@chasqui.chat</a>
+        </nav>
+        <p class="footer-copy">{t.footer.copy}</p>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelectorAll<HTMLButtonElement>(".copy-btn").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          await navigator.clipboard.writeText(btn.dataset.copy ?? "");
+          btn.textContent = "copied!";
+          setTimeout(() => (btn.textContent = "copy"), 1600);
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  /* ---- nav ---- */
+  .nav {
+    background: var(--charcoal);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(239, 222, 196, 0.08);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .nav-logo {
+    display: block;
+    height: 36px;
+    width: auto;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+  .nav-links a:not(.nav-cta) {
+    color: var(--cream-muted);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .nav-links a:not(.nav-cta):hover {
+    color: var(--cream);
+  }
+  .nav-cta {
+    padding: 8px 16px;
+    font-size: 15px;
+  }
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(239, 222, 196, 0.35);
+    font-family: var(--font-display);
+    font-size: 14px;
+  }
+  .lang-switch a {
+    color: var(--cream-muted);
+    text-decoration: none;
+  }
+  .lang-switch a.active {
+    color: var(--amber);
+    font-weight: 700;
+  }
+  @media (max-width: 720px) {
+    .nav-links {
+      gap: 16px;
+    }
+    .nav-links > a:not(.nav-cta) {
+      display: none;
+    }
+  }
+
+  /* ---- hero ---- */
+  .hero {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 96px 0 0;
+    overflow: hidden;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 6vw, 64px);
+    font-weight: 700;
+    color: #f7f1e5;
+  }
+  .hero h1 :global(.accent) {
+    color: var(--amber);
+  }
+  .hero-sub {
+    font-size: 20px;
+    color: var(--cream-muted);
+    max-width: 680px;
+    margin: 24px 0 36px;
+  }
+  .hero-sub :global(strong) {
+    color: var(--cream);
+  }
+  .terminal {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--charcoal-soft);
+    border: 1px solid rgba(239, 222, 196, 0.15);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 17px;
+  }
+  .terminal-dollar {
+    color: var(--amber);
+    font-family: ui-monospace, monospace;
+    font-weight: 700;
+  }
+  .terminal code {
+    color: #f7f1e5;
+    white-space: nowrap;
+  }
+  @media (max-width: 480px) {
+    .terminal {
+      font-size: 14px;
+      gap: 8px;
+      padding: 12px 14px;
+    }
+  }
+  .copy-btn {
+    background: none;
+    border: 1px solid rgba(239, 222, 196, 0.25);
+    border-radius: 6px;
+    color: var(--cream-muted);
+    font-size: 12px;
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+  .copy-btn:hover {
+    color: var(--cream);
+    border-color: var(--cream);
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-note {
+    color: rgba(239, 222, 196, 0.5);
+    font-size: 14px;
+    margin-top: 22px;
+  }
+  .hero-shot-wrap {
+    margin-top: 64px;
+    margin-bottom: -2px;
+  }
+  .hero-shot {
+    display: block;
+    width: 100%;
+    max-width: 1032px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 14px 14px 0 0;
+    border: 1px solid rgba(239, 222, 196, 0.18);
+    border-bottom: none;
+    box-shadow: 0 -10px 60px rgba(234, 155, 39, 0.12);
+  }
+
+  /* ---- features ---- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 44px;
+  }
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .card {
+    background: #fff;
+    border: 1px solid #e7e0d2;
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .card h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+  }
+  .card p {
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: 15.5px;
+  }
+
+  /* ---- architecture ---- */
+  .section-alt {
+    background: var(--cream);
+  }
+  .diagram {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .diagram-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+    min-width: 220px;
+  }
+  .diagram-box {
+    background: #fff;
+    border: 1.5px solid var(--charcoal);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-align: center;
+  }
+  .diagram-box small {
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: var(--ink-muted);
+  }
+  .diagram-box.dashed {
+    border-style: dashed;
+    opacity: 0.65;
+  }
+  .diagram-box.core {
+    background: var(--charcoal);
+    color: #f7f1e5;
+    border-color: var(--charcoal);
+  }
+  .diagram-box.core small {
+    color: var(--cream-muted);
+  }
+  .diagram-box.store {
+    border-color: var(--amber);
+    background: rgba(234, 155, 39, 0.12);
+  }
+  .diagram-contract {
+    text-align: center;
+    font-size: 14px;
+    color: var(--ink-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 170px;
+  }
+  .diagram-contract code {
+    color: var(--terracotta);
+    font-weight: 600;
+  }
+  .diagram-arrow {
+    font-size: 28px;
+    color: var(--charcoal);
+  }
+  .section-foot {
+    margin-top: 36px;
+    color: var(--ink-muted);
+  }
+  .section-foot :global(a) {
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
+  /* ---- panel ---- */
+  .panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 860px) {
+    .panel-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .checklist li {
+    padding-left: 30px;
+    position: relative;
+    color: var(--ink-muted);
+  }
+  .checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: var(--amber);
+    color: var(--charcoal);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .panel-shots {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .shot {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #e7e0d2;
+    box-shadow: 0 8px 30px rgba(28, 25, 23, 0.1);
+  }
+
+  /* ---- quickstart ---- */
+  .quickstart {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  .quickstart .section-title {
+    color: #f7f1e5;
+  }
+  .eyebrow-amber {
+    color: var(--amber);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 44px;
+  }
+  @media (max-width: 860px) {
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+  .step {
+    background: var(--charcoal-soft);
+    border: 1px solid rgba(239, 222, 196, 0.12);
+    border-radius: 14px;
+    padding: 26px;
+  }
+  .step-n {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: var(--charcoal);
+    font-family: var(--font-display);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .step h3 {
+    font-size: 19px;
+    color: #f7f1e5;
+    margin-bottom: 12px;
+  }
+  .step pre {
+    background: var(--charcoal);
+    border: 1px solid rgba(239, 222, 196, 0.12);
+    border-radius: 8px;
+    padding: 12px 14px;
+    overflow-x: auto;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .step pre code {
+    color: var(--cream);
+  }
+  .step p {
+    color: var(--cream-muted);
+    font-size: 14.5px;
+    margin: 12px 0 0;
+  }
+  .quickstart-foot {
+    color: var(--cream-muted);
+  }
+  .quickstart-foot :global(a) {
+    color: var(--amber);
+  }
+
+  /* ---- roadmap ---- */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  @media (max-width: 700px) {
+    .roadmap {
+      grid-template-columns: 1fr;
+    }
+  }
+  .roadmap-item {
+    border: 1.5px dashed #d6c9ae;
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .roadmap-item strong {
+    font-family: var(--font-display);
+  }
+  .roadmap-item span {
+    color: var(--ink-muted);
+    font-size: 15px;
+  }
+
+  /* ---- contact ---- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+    max-width: 760px;
+  }
+  @media (max-width: 640px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .contact-card {
+    background: #fff;
+    border: 1.5px solid var(--charcoal);
+    border-radius: 14px;
+    padding: 26px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(28, 25, 23, 0.12);
+  }
+  .contact-icon {
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+  .contact-card strong {
+    font-family: var(--font-display);
+    font-size: 18px;
+  }
+  .contact-card span:last-child {
+    color: var(--ink-muted);
+    font-size: 15px;
+  }
+
+  /* ---- footer ---- */
+  .footer {
+    background: var(--charcoal);
+    color: var(--cream-muted);
+    padding: 56px 0;
+  }
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: flex-start;
+  }
+  .footer-lore {
+    max-width: 520px;
+    margin: 0;
+  }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .footer-links a:hover {
+    color: var(--amber);
+  }
+  .footer-copy {
+    font-size: 13.5px;
+    margin: 0;
+    color: rgba(239, 222, 196, 0.45);
+  }
+</style>
