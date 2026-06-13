@@ -4,7 +4,7 @@ export const translations = {
   en: {
     title: "Chasqui — open-source stack for AI chat agents",
     description:
-      "Build custom AI chat agents you actually own: LangGraph orchestrator, memory, FAQ RAG, multimodal, human handoff inbox and a pluggable tool system. Self-hosted, channel-agnostic. WhatsApp today, more channels on the roadmap.",
+      "Build custom AI chat agents you actually own: LangGraph orchestrator, memory, FAQ RAG, multimodal, human handoff inbox and a pluggable tool system. Self-hosted, channel-agnostic. WhatsApp and Telegram today, more channels on the roadmap.",
     ogLocale: "en_US",
     nav: {
       features: "Features",
@@ -15,7 +15,7 @@ export const translations = {
     },
     hero: {
       heading: 'Build AI chat agents<br />you actually <span class="accent">own</span>.',
-      sub: "Chasqui is an open-source, self-hosted stack for custom AI chat agents: conversation engine, memory, RAG, human handoff and a pluggable tool system — wired and ready, so your energy goes into your agent's logic. <strong>WhatsApp today, more channels on the roadmap.</strong>",
+      sub: "Chasqui is an open-source, self-hosted stack for custom AI chat agents: conversation engine, memory, RAG, human handoff and a pluggable tool system — wired and ready, so your energy goes into your agent's logic. <strong>WhatsApp and Telegram today, more channels on the roadmap.</strong>",
       getStarted: "Get started",
       star: "Star on GitHub",
       note: "Apache-2.0 · beta · one command scaffolds and provisions the whole stack",
@@ -60,6 +60,7 @@ export const translations = {
       diagramAria:
         "Architecture: channel gateways talk to the core through one canonical contract; the core uses Postgres with pgvector and is operated through the admin panel",
       whatsapp: "PyWa gateway · live",
+      telegram: "PTB gateway · live",
       roadmapTag: "roadmap",
       webWidget: "Web widget",
       contract: "one canonical contract",
@@ -105,7 +106,6 @@ export const translations = {
       eyebrow: "Roadmap",
       title: "Where this is going",
       items: [
-        { title: "Telegram channel", detail: "a second gateway speaking the same contract" },
         { title: "Web chat widget", detail: "embeddable channel for any website" },
         { title: "Analytics", detail: "conversation stats module for the panel" },
         { title: "Document RAG", detail: "knowledge base beyond FAQ pairs — PDFs, docs" },
@@ -130,7 +130,7 @@ export const translations = {
   es: {
     title: "Chasqui — stack open-source para agentes de chat con IA",
     description:
-      "Construye agentes de chat con IA que de verdad son tuyos: orquestador LangGraph, memoria, RAG de FAQs, multimodal, inbox de handoff humano y un sistema de tools enchufable. Self-hosted y agnóstico al canal. WhatsApp hoy, más canales en el roadmap.",
+      "Construye agentes de chat con IA que de verdad son tuyos: orquestador LangGraph, memoria, RAG de FAQs, multimodal, inbox de handoff humano y un sistema de tools enchufable. Self-hosted y agnóstico al canal. WhatsApp y Telegram hoy, más canales en el roadmap.",
     ogLocale: "es_LA",
     nav: {
       features: "Funciones",
@@ -142,7 +142,7 @@ export const translations = {
     hero: {
       heading:
         'Construye agentes de chat<br />con IA que de verdad son <span class="accent">tuyos</span>.',
-      sub: "Chasqui es un stack open-source y self-hosted para agentes de chat con IA a medida: motor de conversación, memoria, RAG, handoff humano y un sistema de tools enchufable — todo cableado y listo, para que tu energía vaya a la lógica de tu agente. <strong>WhatsApp hoy, más canales en el roadmap.</strong>",
+      sub: "Chasqui es un stack open-source y self-hosted para agentes de chat con IA a medida: motor de conversación, memoria, RAG, handoff humano y un sistema de tools enchufable — todo cableado y listo, para que tu energía vaya a la lógica de tu agente. <strong>WhatsApp y Telegram hoy, más canales en el roadmap.</strong>",
       getStarted: "Empieza ahora",
       star: "Star en GitHub",
       note: "Apache-2.0 · beta · un comando crea y aprovisiona todo el stack",
@@ -187,6 +187,7 @@ export const translations = {
       diagramAria:
         "Arquitectura: los gateways de canal hablan con el core a través de un contrato canónico; el core usa Postgres con pgvector y se opera desde el panel de administración",
       whatsapp: "gateway PyWa · activo",
+      telegram: "gateway PTB · activo",
       roadmapTag: "roadmap",
       webWidget: "Widget web",
       contract: "un contrato canónico",
@@ -232,7 +233,6 @@ export const translations = {
       eyebrow: "Roadmap",
       title: "Hacia dónde va esto",
       items: [
-        { title: "Canal de Telegram", detail: "un segundo gateway que habla el mismo contrato" },
         { title: "Widget de chat web", detail: "canal embebible para cualquier sitio" },
         { title: "Analytics", detail: "módulo de estadísticas de conversación para el panel" },
         { title: "RAG de documentos", detail: "base de conocimiento más allá de FAQs — PDFs, docs" },
