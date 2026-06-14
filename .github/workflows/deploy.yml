@@ -22,6 +22,12 @@ jobs:
       - uses: withastro/action@v3
         with:
           node-version: 22
+        env:
+          # Cloudflare Web Analytics beacon (manual setup — GitHub Pages isn't
+          # behind the CF proxy, so auto-injection can't run). Public client-side
+          # token; set as a repo *variable* under Settings -> Secrets and
+          # variables -> Actions -> Variables.
+          PUBLIC_CF_BEACON_TOKEN: ${{ vars.PUBLIC_CF_BEACON_TOKEN }}
 
   deploy:
     needs: build

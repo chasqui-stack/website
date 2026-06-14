@@ -31,6 +31,10 @@ const GITHUB = "https://github.com/chasqui-stack/chasqui";
 const home = lang === "en" ? "/" : "/es/";
 const canonical = `${SITE}${home}`;
 
+// Cloudflare Web Analytics — cookieless, no consent banner. Token is a public
+// client-side beacon id; set PUBLIC_CF_BEACON_TOKEN per deploy (unset in dev).
+const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+
 const stepCode = [
   "uvx chasqui new my-agent",
   "cd core && make dev\ncd whatsapp && make dev\ncd admin && npm run dev",
@@ -62,6 +66,15 @@ const stepCode = [
       content={lang === "en" ? "es_LA" : "en_US"}
     />
     <meta name="twitter:card" content="summary_large_image" />
+    {
+      cfBeaconToken && (
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${cfBeaconToken}"}`}
+        />
+      )
+    }
   </head>
 
   <body>
