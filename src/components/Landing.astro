@@ -87,6 +87,7 @@ const stepCode = [
           <a href="#features">{t.nav.features}</a>
           <a href="#architecture">{t.nav.architecture}</a>
           <a href="#quickstart">{t.nav.quickstart}</a>
+          <a href="#skills">{t.nav.skills}</a>
           <a href="#roadmap">{t.nav.roadmap}</a>
           <a href="#contact">{t.nav.contact}</a>
           <div class="lang-switch">
@@ -211,6 +212,33 @@ const stepCode = [
           }
         </div>
         <p class="section-foot quickstart-foot" set:html={t.quickstart.foot} />
+      </div>
+    </section>
+
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <span class="eyebrow">{t.skills.eyebrow}</span>
+        <h2 class="section-title">{t.skills.title}</h2>
+        <p class="section-lead">{t.skills.lead}</p>
+
+        <div class="terminal">
+          <span class="terminal-dollar">$</span>
+          <code>{t.skills.install}</code>
+          <button class="copy-btn" data-copy={t.skills.install} aria-label="Copy command">copy</button>
+        </div>
+
+        <div class="grid">
+          {
+            t.skills.cards.map((s) => (
+              <div class="card">
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <p class="section-foot" set:html={t.skills.foot} />
       </div>
     </section>
 
