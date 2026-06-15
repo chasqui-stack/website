@@ -121,6 +121,18 @@ export const translations = {
           title: "chasqui-create-channel",
           body: "Add a new channel over the canonical contract, with the live Telegram gateway as the worked example.",
         },
+        {
+          title: "chasqui-create-module",
+          body: "Give the agent a new capability — a Tool Module bundling tools, tables and admin config.",
+        },
+        {
+          title: "chasqui-write-adr",
+          body: "Record a non-obvious decision the Chasqui way — a docs-as-code ADR in the same PR.",
+        },
+        {
+          title: "chasqui-deploy",
+          body: "Ship and operate the stack on a server with Kamal 2 — core, gateway and admin, in order.",
+        },
       ],
       foot: 'Works with Claude Code, Cursor, Codex, Gemini CLI and more — the open <a href="https://agentskills.io">Agent Skills</a> standard. <a href="https://github.com/chasqui-stack/skills">Browse the skills</a>.',
     },
@@ -269,6 +281,18 @@ export const translations = {
         {
           title: "chasqui-create-channel",
           body: "Agrega un canal nuevo sobre el contrato canónico, con el gateway de Telegram (activo) como ejemplo.",
+        },
+        {
+          title: "chasqui-create-module",
+          body: "Dale una capacidad nueva al agente — un Tool Module con tools, tablas y config en el panel.",
+        },
+        {
+          title: "chasqui-write-adr",
+          body: "Registra una decisión no obvia al estilo Chasqui — un ADR docs-as-code en el mismo PR.",
+        },
+        {
+          title: "chasqui-deploy",
+          body: "Despliega y opera el stack en un servidor con Kamal 2 — core, gateway y admin, en orden.",
         },
       ],
       foot: 'Funciona con Claude Code, Cursor, Codex, Gemini CLI y más — el estándar abierto <a href="https://agentskills.io">Agent Skills</a>. <a href="https://github.com/chasqui-stack/skills">Explora los skills</a>.',
