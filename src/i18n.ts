@@ -10,6 +10,7 @@ export const translations = {
       features: "Features",
       architecture: "Architecture",
       quickstart: "Quickstart",
+      skills: "Skills",
       roadmap: "Roadmap",
       contact: "Contact",
     },
@@ -102,6 +103,27 @@ export const translations = {
       ],
       foot: 'Prerequisites: <a href="https://docs.astral.sh/uv/">uv</a>, Node 22, PostgreSQL with pgvector (or the generated docker-compose).',
     },
+    skills: {
+      eyebrow: "Agent skills",
+      title: "Teach your coding agent to extend it",
+      lead: "The omakase conventions, packaged as installable Agent Skills. Your coding agent reads them on demand and knows how to scaffold, add a channel or build a module the Chasqui way — pointing to the canonical docs, never guessing.",
+      install: "npx skills add chasqui-stack/skills --skill '*'",
+      cards: [
+        {
+          title: "chasqui-primer",
+          body: "The router: philosophy, the three services and the canonical contract — then it points your agent to the right skill.",
+        },
+        {
+          title: "chasqui-cli",
+          body: "Scaffold and extend with the CLI: chasqui new, the wizard, chasqui generate module.",
+        },
+        {
+          title: "chasqui-create-channel",
+          body: "Add a new channel over the canonical contract, with the live Telegram gateway as the worked example.",
+        },
+      ],
+      foot: 'Works with Claude Code, Cursor, Codex, Gemini CLI and more — the open <a href="https://agentskills.io">Agent Skills</a> standard. <a href="https://github.com/chasqui-stack/skills">Browse the skills</a>.',
+    },
     roadmap: {
       eyebrow: "Roadmap",
       title: "Where this is going",
@@ -136,6 +158,7 @@ export const translations = {
       features: "Funciones",
       architecture: "Arquitectura",
       quickstart: "Quickstart",
+      skills: "Skills",
       roadmap: "Roadmap",
       contact: "Contacto",
     },
@@ -228,6 +251,27 @@ export const translations = {
         },
       ],
       foot: 'Prerequisitos: <a href="https://docs.astral.sh/uv/">uv</a>, Node 22 y PostgreSQL con pgvector (o el docker-compose generado).',
+    },
+    skills: {
+      eyebrow: "Skills para tu agente",
+      title: "Enséñale a tu agente a extenderlo",
+      lead: "Las convenciones omakase, empaquetadas como Agent Skills instalables. Tu agente de código las lee on-demand y sabe crear el proyecto, agregar un canal o construir un módulo al estilo Chasqui — apuntando a la doc canónica, sin adivinar.",
+      install: "npx skills add chasqui-stack/skills --skill '*'",
+      cards: [
+        {
+          title: "chasqui-primer",
+          body: "El router: filosofía, los tres servicios y el contrato canónico — y te enruta al skill correcto.",
+        },
+        {
+          title: "chasqui-cli",
+          body: "Crea y extiende con el CLI: chasqui new, el wizard, chasqui generate module.",
+        },
+        {
+          title: "chasqui-create-channel",
+          body: "Agrega un canal nuevo sobre el contrato canónico, con el gateway de Telegram (activo) como ejemplo.",
+        },
+      ],
+      foot: 'Funciona con Claude Code, Cursor, Codex, Gemini CLI y más — el estándar abierto <a href="https://agentskills.io">Agent Skills</a>. <a href="https://github.com/chasqui-stack/skills">Explora los skills</a>.',
     },
     roadmap: {
       eyebrow: "Roadmap",
