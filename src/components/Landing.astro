@@ -40,6 +40,23 @@ const stepCode = [
   "cd core && make dev\ncd whatsapp && make dev\ncd admin && npm run dev",
   "docs/WHATSAPP-SETUP.md",
 ];
+
+const webEmbedCode = `<script src="https://chat.your-domain.com/widget.js"
+        data-gateway="https://chat.your-domain.com"></script>`;
+
+const webConfigCode = `# web gateway .env  (chasqui-stack/web)
+PORT=8002                    # where the gateway listens
+CORE_URL=http://localhost:8090
+INTERNAL_API_KEY=...         # shared secret with the core — never in the browser
+WEB_ALLOWED_ORIGINS=https://your-site.com   # who may embed the widget
+RATE_LIMIT_WINDOW_MS=60000   # public endpoint — rate limit per visitor/IP
+RATE_LIMIT_MAX=30
+HISTORY_LIMIT=50             # messages rehydrated when the widget reopens
+ERROR_REPLY=...              # gateway-local literals, fire when the
+UNSUPPORTED_REPLY=...        # core is unreachable
+
+# core .env — deferred replies reach the browser over SSE
+CHANNEL_WEB_SEND_URL=https://chat.your-domain.com/send`;
 ---
 
 <!doctype html>
@@ -152,7 +169,7 @@ const stepCode = [
           <div class="diagram-col">
             <div class="diagram-box channel">WhatsApp<br /><small>{t.architecture.whatsapp}</small></div>
             <div class="diagram-box channel">Telegram<br /><small>{t.architecture.telegram}</small></div>
-            <div class="diagram-box channel dashed">{t.architecture.webWidget}<br /><small>{t.architecture.roadmapTag}</small></div>
+            <div class="diagram-box channel">{t.architecture.webWidget}<br /><small>{t.architecture.web}</small></div>
           </div>
           <div class="diagram-contract">
             <span>{t.architecture.contract}</span>
@@ -192,6 +209,38 @@ const stepCode = [
           <Image src={dashboardShot} alt={t.panel.dashboardAlt} class="shot" widths={[520, 1040]} sizes="(max-width: 800px) 100vw, 520px" />
           <Image src={conversationShot} alt={t.panel.conversationAlt} class="shot" widths={[520, 1040]} sizes="(max-width: 800px) 100vw, 520px" />
         </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="web-widget">
+      <div class="container">
+        <span class="eyebrow">{t.web.eyebrow}</span>
+        <h2 class="section-title">{t.web.title}</h2>
+        <p class="section-lead">{t.web.lead}</p>
+
+        <div class="web-grid">
+          <div class="web-col">
+            <h3 class="web-col-title">{t.web.embedTitle}</h3>
+            <pre class="web-code"><code>{webEmbedCode}</code></pre>
+            <ul class="checklist">
+              {
+                t.web.features.map((item) => (
+                  <li>
+                    <span class="check"><Check size={13} stroke-width={3} /></span>
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="web-col">
+            <h3 class="web-col-title">{t.web.configTitle}</h3>
+            <pre class="web-code"><code>{webConfigCode}</code></pre>
+            <p class="web-config-note">{t.web.configNote}</p>
+          </div>
+        </div>
+
+        <p class="section-foot" set:html={t.web.foot} />
       </div>
     </section>
 
@@ -615,6 +664,44 @@ const stepCode = [
     border-radius: 12px;
     border: 1px solid #e7e0d2;
     box-shadow: 0 8px 30px rgba(28, 25, 23, 0.1);
+  }
+
+  /* ---- web widget ---- */
+  .web-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    margin-top: 44px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .web-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .web-col-title {
+    font-size: 19px;
+    margin-bottom: 14px;
+  }
+  .web-code {
+    background: var(--charcoal);
+    border: 1px solid rgba(239, 222, 196, 0.12);
+    border-radius: 10px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .web-code code {
+    color: var(--cream);
+  }
+  .web-grid .checklist {
+    margin-top: 22px;
+  }
+  .web-config-note {
+    color: var(--ink-muted);
+    font-size: 14.5px;
+    margin: 14px 0 0;
   }
 
   /* ---- quickstart ---- */

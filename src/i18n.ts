@@ -4,7 +4,7 @@ export const translations = {
   en: {
     title: "Chasqui — open-source stack for AI chat agents",
     description:
-      "Build custom AI chat agents you actually own: LangGraph orchestrator, memory, FAQ RAG, multimodal, human handoff inbox and a pluggable tool system. Self-hosted, channel-agnostic. WhatsApp and Telegram today, more channels on the roadmap.",
+      "Build custom AI chat agents you actually own: LangGraph orchestrator, memory, FAQ RAG, multimodal, human handoff inbox and a pluggable tool system. Self-hosted, channel-agnostic. WhatsApp, Telegram and an embeddable web widget today, more channels on the roadmap.",
     ogLocale: "en_US",
     nav: {
       features: "Features",
@@ -16,7 +16,7 @@ export const translations = {
     },
     hero: {
       heading: 'Build AI chat agents<br />you actually <span class="accent">own</span>.',
-      sub: "Chasqui is an open-source, self-hosted stack for custom AI chat agents: conversation engine, memory, RAG, human handoff and a pluggable tool system — wired and ready, so your energy goes into your agent's logic. <strong>WhatsApp and Telegram today, more channels on the roadmap.</strong>",
+      sub: "Chasqui is an open-source, self-hosted stack for custom AI chat agents: conversation engine, memory, RAG, human handoff and a pluggable tool system — wired and ready, so your energy goes into your agent's logic. <strong>WhatsApp, Telegram and a web chat widget today, more channels on the roadmap.</strong>",
       getStarted: "Get started",
       star: "Star on GitHub",
       note: "Apache-2.0 · beta · one command scaffolds and provisions the whole stack",
@@ -62,7 +62,7 @@ export const translations = {
         "Architecture: channel gateways talk to the core through one canonical contract; the core uses Postgres with pgvector and is operated through the admin panel",
       whatsapp: "PyWa gateway · live",
       telegram: "PTB gateway · live",
-      roadmapTag: "roadmap",
+      web: "Node gateway · live",
       webWidget: "Web widget",
       contract: "one canonical contract",
       coreSmall: "FastAPI + LangGraph<br />agent · memory · RAG · tools · handoff",
@@ -83,6 +83,22 @@ export const translations = {
       dashboardAlt: "Chasqui admin dashboard in dark mode",
       conversationAlt:
         "A full conversation: AI replies, human handoff, operator takeover",
+    },
+    web: {
+      eyebrow: "Web channel",
+      title: "A chat bubble for any website",
+      lead: "The newest channel ships its own client: an embeddable widget that puts your agent in front of anonymous site visitors — same memory, same tools, same handoff inbox. One script tag on any page and the amber bubble is live.",
+      embedTitle: "Embed it",
+      features: [
+        "Live replies pushed over SSE — answers land the moment the agent sends them",
+        "Images and voice notes, both ways — audio inherits the STT fallback",
+        "The conversation rehydrates on reopen, so deferred replies are never lost",
+        "Shadow-DOM isolated and ~11 kB gzip — no styles leak in either direction",
+      ],
+      configTitle: "Configure the gateway",
+      configNote:
+        "The browser only ever talks to the gateway — the internal key stays server-side, and an origin allowlist plus per-visitor rate limits guard the public endpoint.",
+      foot: 'Its own repo, its own gateway: <a href="https://github.com/chasqui-stack/web">chasqui-stack/web</a> — the design is written down in <a href="https://github.com/chasqui-stack/chasqui/blob/main/docs/design/adr-011-web-channel.md">ADR-011</a>.',
     },
     quickstart: {
       eyebrow: "Quickstart",
@@ -140,7 +156,6 @@ export const translations = {
       eyebrow: "Roadmap",
       title: "Where this is going",
       items: [
-        { title: "Web chat widget", detail: "embeddable channel for any website" },
         { title: "Analytics", detail: "conversation stats module for the panel" },
         { title: "Document RAG", detail: "knowledge base beyond FAQ pairs — PDFs, docs" },
       ],
@@ -164,7 +179,7 @@ export const translations = {
   es: {
     title: "Chasqui — stack open-source para agentes de chat con IA",
     description:
-      "Construye agentes de chat con IA que de verdad son tuyos: orquestador LangGraph, memoria, RAG de FAQs, multimodal, inbox de handoff humano y un sistema de tools enchufable. Self-hosted y agnóstico al canal. WhatsApp y Telegram hoy, más canales en el roadmap.",
+      "Construye agentes de chat con IA que de verdad son tuyos: orquestador LangGraph, memoria, RAG de FAQs, multimodal, inbox de handoff humano y un sistema de tools enchufable. Self-hosted y agnóstico al canal. WhatsApp, Telegram y un widget web embebible hoy, más canales en el roadmap.",
     ogLocale: "es_LA",
     nav: {
       features: "Funciones",
@@ -177,7 +192,7 @@ export const translations = {
     hero: {
       heading:
         'Construye agentes de chat<br />con IA que de verdad son <span class="accent">tuyos</span>.',
-      sub: "Chasqui es un stack open-source y self-hosted para agentes de chat con IA a medida: motor de conversación, memoria, RAG, handoff humano y un sistema de tools enchufable — todo cableado y listo, para que tu energía vaya a la lógica de tu agente. <strong>WhatsApp y Telegram hoy, más canales en el roadmap.</strong>",
+      sub: "Chasqui es un stack open-source y self-hosted para agentes de chat con IA a medida: motor de conversación, memoria, RAG, handoff humano y un sistema de tools enchufable — todo cableado y listo, para que tu energía vaya a la lógica de tu agente. <strong>WhatsApp, Telegram y un widget de chat web hoy, más canales en el roadmap.</strong>",
       getStarted: "Empieza ahora",
       star: "Star en GitHub",
       note: "Apache-2.0 · beta · un comando crea y aprovisiona todo el stack",
@@ -223,7 +238,7 @@ export const translations = {
         "Arquitectura: los gateways de canal hablan con el core a través de un contrato canónico; el core usa Postgres con pgvector y se opera desde el panel de administración",
       whatsapp: "gateway PyWa · activo",
       telegram: "gateway PTB · activo",
-      roadmapTag: "roadmap",
+      web: "gateway Node · activo",
       webWidget: "Widget web",
       contract: "un contrato canónico",
       coreSmall: "FastAPI + LangGraph<br />agente · memoria · RAG · tools · handoff",
@@ -244,6 +259,22 @@ export const translations = {
       dashboardAlt: "Dashboard del panel de Chasqui en modo oscuro",
       conversationAlt:
         "Una conversación completa: respuestas de la IA, handoff humano y toma de control del operador",
+    },
+    web: {
+      eyebrow: "Canal web",
+      title: "Una burbuja de chat para cualquier sitio",
+      lead: "El canal más nuevo trae su propio cliente: un widget embebible que pone a tu agente frente a visitantes anónimos — misma memoria, mismas tools, mismo inbox de handoff. Un script tag en cualquier página y la burbuja ámbar queda activa.",
+      embedTitle: "Embébelo",
+      features: [
+        "Respuestas en vivo por SSE — llegan al navegador apenas el agente las envía",
+        "Imágenes y notas de voz, en ambos sentidos — el audio hereda el fallback de STT",
+        "La conversación se rehidrata al reabrir: las respuestas diferidas nunca se pierden",
+        "Aislado con Shadow DOM y ~11 kB gzip — ningún estilo se filtra en ninguna dirección",
+      ],
+      configTitle: "Configura el gateway",
+      configNote:
+        "El navegador solo habla con el gateway — la key interna se queda del lado del servidor, y una allowlist de orígenes más rate limits por visitante protegen el endpoint público.",
+      foot: 'Su propio repo, su propio gateway: <a href="https://github.com/chasqui-stack/web">chasqui-stack/web</a> — el diseño está escrito en el <a href="https://github.com/chasqui-stack/chasqui/blob/main/docs/design/adr-011-web-channel.md">ADR-011</a>.',
     },
     quickstart: {
       eyebrow: "Quickstart",
