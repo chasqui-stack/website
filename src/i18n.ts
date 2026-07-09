@@ -98,7 +98,7 @@ export const translations = {
       configTitle: "Configure the gateway",
       configNote:
         "The browser only ever talks to the gateway — the internal key stays server-side, and an origin allowlist plus per-visitor rate limits guard the public endpoint.",
-      foot: 'Its own repo, its own gateway: <a href="https://github.com/chasqui-stack/web">chasqui-stack/web</a> — the design is written down in <a href="https://github.com/chasqui-stack/chasqui/blob/main/docs/design/adr-011-web-channel.md">ADR-011</a>.',
+      foot: 'Already running a Chasqui project? <code>uvx chasqui add channel web</code> retrofits the widget in one command. Its own repo, its own gateway: <a href="https://github.com/chasqui-stack/web">chasqui-stack/web</a> — the design is written down in <a href="https://github.com/chasqui-stack/chasqui/blob/main/docs/design/adr-011-web-channel.md">ADR-011</a>.',
     },
     quickstart: {
       eyebrow: "Quickstart",
@@ -131,7 +131,7 @@ export const translations = {
         },
         {
           title: "chasqui-cli",
-          body: "Scaffold and extend with the CLI: chasqui new, the wizard, chasqui generate module.",
+          body: "Scaffold and extend with the CLI: chasqui new, the wizard, chasqui add channel, chasqui generate module.",
         },
         {
           title: "chasqui-create-channel",
@@ -274,7 +274,7 @@ export const translations = {
       configTitle: "Configura el gateway",
       configNote:
         "El navegador solo habla con el gateway — la key interna se queda del lado del servidor, y una allowlist de orígenes más rate limits por visitante protegen el endpoint público.",
-      foot: 'Su propio repo, su propio gateway: <a href="https://github.com/chasqui-stack/web">chasqui-stack/web</a> — el diseño está escrito en el <a href="https://github.com/chasqui-stack/chasqui/blob/main/docs/design/adr-011-web-channel.md">ADR-011</a>.',
+      foot: '¿Ya tienes un proyecto Chasqui corriendo? <code>uvx chasqui add channel web</code> le agrega el widget en un comando. Su propio repo, su propio gateway: <a href="https://github.com/chasqui-stack/web">chasqui-stack/web</a> — el diseño está escrito en el <a href="https://github.com/chasqui-stack/chasqui/blob/main/docs/design/adr-011-web-channel.md">ADR-011</a>.',
     },
     quickstart: {
       eyebrow: "Quickstart",
@@ -307,7 +307,7 @@ export const translations = {
         },
         {
           title: "chasqui-cli",
-          body: "Crea y extiende con el CLI: chasqui new, el wizard, chasqui generate module.",
+          body: "Crea y extiende con el CLI: chasqui new, el wizard, chasqui add channel, chasqui generate module.",
         },
         {
           title: "chasqui-create-channel",
