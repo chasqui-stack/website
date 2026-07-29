@@ -352,6 +352,24 @@ CHANNEL_WEB_SEND_URL=https://chat.your-domain.com/send`;
         });
       });
     </script>
+
+    {/* Dogfood: the Chasqui web widget, served by our own chasqui-prod stack.
+        `is:inline` keeps Astro from bundling it — it must stay a plain external
+        script, exactly the snippet a user pastes. The widget resolves the
+        gateway from `data-gateway` (falling back to the script's own origin).
+        PROD-only: the gateway's WEB_ALLOWED_ORIGINS allows chasqui.chat and
+        www.chasqui.chat only, so on localhost the bubble would open and every
+        message would fail the origin check. */}
+    {
+      import.meta.env.PROD && (
+        <script
+          is:inline
+          defer
+          src="https://chat.chasqui.chat/widget.js"
+          data-gateway="https://chat.chasqui.chat"
+        />
+      )
+    }
   </body>
 </html>
 
