@@ -4,7 +4,7 @@ export const translations = {
   en: {
     title: "Chasqui — open-source stack for AI chat agents",
     description:
-      "Build custom AI chat agents you actually own: LangGraph orchestrator, memory, FAQ RAG, multimodal, human handoff inbox and a pluggable tool system. Self-hosted, channel-agnostic. WhatsApp, Telegram and an embeddable web widget today, more channels on the roadmap.",
+      "Build custom AI chat agents you actually own: LangGraph orchestrator, memory, RAG over FAQs and your own documents, multimodal, human handoff inbox and a pluggable tool system. Self-hosted, channel-agnostic. WhatsApp, Telegram and an embeddable web widget today, more channels on the roadmap.",
     ogLocale: "en_US",
     nav: {
       features: "Features",
@@ -33,8 +33,8 @@ export const translations = {
           body: "A LangGraph orchestrator keeps one continuous thread per contact — context, silence handling and delivery errors are already solved.",
         },
         {
-          title: "Memory + FAQ RAG",
-          body: "Long-term memory and a grounded FAQ knowledge base on Postgres + pgvector. Answers cite your content, not hallucinations.",
+          title: "Memory + grounded RAG",
+          body: "Long-term memory, a curated FAQ and a document knowledge base — upload PDFs, Word files or Markdown — on Postgres + pgvector. Answers come from your content, not hallucinations.",
         },
         {
           title: "Multimodal, both ways",
@@ -76,6 +76,7 @@ export const translations = {
       checklist: [
         "Edit the system prompt and watch behavior change on the next message",
         "Curate the FAQ knowledge base that grounds RAG answers",
+        "Upload manuals, price lists and policies — the agent answers from them",
         "Configure tool modules through auto-rendered forms",
         "Watch conversations live, take over when it matters",
         "Capture and review leads",
@@ -83,6 +84,20 @@ export const translations = {
       dashboardAlt: "Chasqui admin dashboard in dark mode",
       conversationAlt:
         "A full conversation: AI replies, human handoff, operator takeover",
+    },
+    documents: {
+      eyebrow: "Document knowledge base · new in v0.5.0",
+      title: "Drop in your files. The agent answers from them.",
+      lead: "Nobody retypes a 20-page manual as FAQ entries. Upload the price list, the product manual, the policies — Chasqui extracts the text, chunks it, embeds it and the agent searches it on demand. No bucket, no queue, no new service: it works on every install.",
+      features: [
+        "pdf, docx, txt, md and html, up to 10 MB — tables stay where the author put them",
+        "Background indexing with a live status per file: processing, indexed, error",
+        "Retrieval preview with similarity scores, to see what the agent would find before a user asks",
+        "FAQ and documents coexist: each tool knows the other's territory and hands over on a miss",
+        "Duplicates rejected by content hash; reprocess re-indexes without uploading again",
+      ],
+      shotAlt: "Chasqui admin, Documents page: a drop zone, three uploaded files with their status, and a retrieval preview showing a passage with its similarity score",
+      foot: 'Tuned against a real LLM, not by feel: in the routing eval every answer was grounded — 50 of 50. The design and its honest trade-offs are written down in <a href="https://github.com/chasqui-stack/chasqui/blob/main/docs/design/adr-013-document-rag.md">ADR-013</a>.',
     },
     web: {
       eyebrow: "Web channel",
@@ -157,7 +172,7 @@ export const translations = {
       title: "Where this is going",
       items: [
         { title: "Analytics", detail: "conversation stats module for the panel" },
-        { title: "Document RAG", detail: "knowledge base beyond FAQ pairs — PDFs, docs" },
+        { title: "Document RAG, next", detail: "OCR for scanned PDFs, original-file download, hybrid search" },
       ],
       foot: 'Issues and ideas welcome — <a href="https://github.com/chasqui-stack/chasqui">join in on GitHub</a>.',
     },
@@ -179,7 +194,7 @@ export const translations = {
   es: {
     title: "Chasqui — stack open-source para agentes de chat con IA",
     description:
-      "Construye agentes de chat con IA que de verdad son tuyos: orquestador LangGraph, memoria, RAG de FAQs, multimodal, inbox de handoff humano y un sistema de tools enchufable. Self-hosted y agnóstico al canal. WhatsApp, Telegram y un widget web embebible hoy, más canales en el roadmap.",
+      "Construye agentes de chat con IA que de verdad son tuyos: orquestador LangGraph, memoria, RAG sobre FAQs y tus propios documentos, multimodal, inbox de handoff humano y un sistema de tools enchufable. Self-hosted y agnóstico al canal. WhatsApp, Telegram y un widget web embebible hoy, más canales en el roadmap.",
     ogLocale: "es_LA",
     nav: {
       features: "Funciones",
@@ -209,8 +224,8 @@ export const translations = {
           body: "Un orquestador LangGraph mantiene un hilo continuo por contacto — contexto, manejo de silencios y errores de entrega ya están resueltos.",
         },
         {
-          title: "Memoria + RAG de FAQs",
-          body: "Memoria de largo plazo y una base de conocimiento de FAQs sobre Postgres + pgvector. Respuestas ancladas en tu contenido, no alucinaciones.",
+          title: "Memoria + RAG anclado",
+          body: "Memoria de largo plazo, FAQs curadas y una base de documentos — sube PDFs, Word o Markdown — sobre Postgres + pgvector. Las respuestas salen de tu contenido, no de alucinaciones.",
         },
         {
           title: "Multimodal, en ambos sentidos",
@@ -252,6 +267,7 @@ export const translations = {
       checklist: [
         "Edita el system prompt y mira el comportamiento cambiar en el siguiente mensaje",
         "Cura la base de FAQs que ancla las respuestas del RAG",
+        "Sube manuales, listas de precios y políticas — el agente responde desde ellos",
         "Configura los tool modules con formularios auto-renderizados",
         "Mira las conversaciones en vivo y toma el control cuando importa",
         "Captura y revisa leads",
@@ -259,6 +275,20 @@ export const translations = {
       dashboardAlt: "Dashboard del panel de Chasqui en modo oscuro",
       conversationAlt:
         "Una conversación completa: respuestas de la IA, handoff humano y toma de control del operador",
+    },
+    documents: {
+      eyebrow: "Base de documentos · nuevo en v0.5.0",
+      title: "Suelta tus archivos. El agente responde desde ellos.",
+      lead: "Nadie va a retipear un manual de 20 páginas como FAQs. Sube la lista de precios, el manual del producto, las políticas — Chasqui extrae el texto, lo trocea, lo vectoriza y el agente lo busca cuando hace falta. Sin bucket, sin cola, sin servicios nuevos: funciona en cualquier instalación.",
+      features: [
+        "pdf, docx, txt, md y html, hasta 10 MB — las tablas quedan donde el autor las puso",
+        "Indexado en segundo plano con estado en vivo por archivo: procesando, indexado, error",
+        "Vista previa de recuperación con puntajes de similitud, para ver qué encontraría el agente antes de que un usuario pregunte",
+        "FAQs y documentos conviven: cada tool conoce el territorio de la otra y le pasa la posta si no encuentra",
+        "Duplicados rechazados por hash del contenido; reprocesar reindexa sin volver a subir",
+      ],
+      shotAlt: "Admin de Chasqui, página Documentos: zona para soltar archivos, tres archivos subidos con su estado y una vista previa de recuperación con un pasaje y su puntaje de similitud",
+      foot: 'Ajustado contra un LLM real, no a ojo: en la evaluación de ruteo todas las respuestas salieron ancladas — 50 de 50. El diseño y sus trade-offs honestos están escritos en el <a href="https://github.com/chasqui-stack/chasqui/blob/main/docs/design/adr-013-document-rag.md">ADR-013</a>.',
     },
     web: {
       eyebrow: "Canal web",
@@ -334,7 +364,7 @@ export const translations = {
       items: [
         { title: "Widget de chat web", detail: "canal embebible para cualquier sitio" },
         { title: "Analytics", detail: "módulo de estadísticas de conversación para el panel" },
-        { title: "RAG de documentos", detail: "base de conocimiento más allá de FAQs — PDFs, docs" },
+        { title: "RAG de documentos, lo que sigue", detail: "OCR para PDFs escaneados, descarga del archivo original, búsqueda híbrida" },
       ],
       foot: 'Issues e ideas bienvenidos — <a href="https://github.com/chasqui-stack/chasqui">súmate en GitHub</a>.',
     },

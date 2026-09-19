@@ -9,6 +9,7 @@ import logo from "../assets/chasqui-logo.svg";
 import inboxShot from "../assets/inbox.png";
 import conversationShot from "../assets/conversation.png";
 import dashboardShot from "../assets/dashboard-dark.png";
+import knowledgeShot from "../assets/knowledge.png";
 import { translations, type Lang } from "../i18n";
 import {
   ArrowLeftRight,
@@ -212,7 +213,31 @@ CHANNEL_WEB_SEND_URL=https://chat.your-domain.com/send`;
       </div>
     </section>
 
-    <section class="section section-alt" id="web-widget">
+    <section class="section section-alt" id="documents">
+      <div class="container">
+        <span class="eyebrow">{t.documents.eyebrow}</span>
+        <h2 class="section-title">{t.documents.title}</h2>
+        <p class="section-lead">{t.documents.lead}</p>
+
+        <div class="docs-grid">
+          <Image src={knowledgeShot} alt={t.documents.shotAlt} class="shot" widths={[640, 1280]} sizes="(max-width: 860px) 100vw, 640px" />
+          <ul class="checklist">
+            {
+              t.documents.features.map((item) => (
+                <li>
+                  <span class="check"><Check size={13} stroke-width={3} /></span>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <p class="section-foot" set:html={t.documents.foot} />
+      </div>
+    </section>
+
+    <section class="section" id="web-widget">
       <div class="container">
         <span class="eyebrow">{t.web.eyebrow}</span>
         <h2 class="section-title">{t.web.title}</h2>
@@ -469,6 +494,7 @@ CHANNEL_WEB_SEND_URL=https://chat.your-domain.com/send`;
     border-radius: 12px;
     padding: 14px 18px;
     font-size: 17px;
+    max-width: 100%;
   }
   .terminal-dollar {
     color: var(--amber);
@@ -478,6 +504,10 @@ CHANNEL_WEB_SEND_URL=https://chat.your-domain.com/send`;
   .terminal code {
     color: #f7f1e5;
     white-space: nowrap;
+    /* a long command scrolls inside the pill instead of widening the page */
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
   @media (max-width: 480px) {
     .terminal {
@@ -633,6 +663,21 @@ CHANNEL_WEB_SEND_URL=https://chat.your-domain.com/send`;
     font-weight: 500;
   }
 
+  /* ---- documents ---- */
+  .docs-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: center;
+    margin-top: 40px;
+  }
+  @media (max-width: 860px) {
+    .docs-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
   /* ---- panel ---- */
   .panel-grid {
     display: grid;
@@ -700,6 +745,11 @@ CHANNEL_WEB_SEND_URL=https://chat.your-domain.com/send`;
   .web-col-title {
     font-size: 19px;
     margin-bottom: 14px;
+  }
+  /* grid items default to min-width:auto — a long <pre> line would stretch
+     the column past the viewport instead of scrolling inside the block */
+  .web-col {
+    min-width: 0;
   }
   .web-code {
     background: var(--charcoal);
